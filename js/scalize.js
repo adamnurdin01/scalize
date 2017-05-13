@@ -29,7 +29,10 @@
             this.settings = $.extend(variable, options);
             this.event(el);
             scaling.layout(el);
-            $(el).find('.target').on('load', function(){
+            // $(el).find('.target').on('load', function(){
+            //     scaling.layout(el);
+            // });
+            $(window).on('load', function(){
                 scaling.layout(el);
             });
             $(window).on('resize', function(){
