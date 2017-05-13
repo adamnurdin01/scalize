@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>jQuery - Scalize</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/scalize.min.css" />
+    <style>
+        body{
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .tab-pane{
+            padding: 25px 30px;
+            border: solid 1px #dfdfdf;
+            border-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h5>Basic Scalize</h5>
+
+        <div class="scalize">
+            <img src="img/img01.jpg" alt="" class="target">
+            <div class="item-point" data-top="730" data-left="227"></div>
+            <div class="item-point" data-top="380" data-left="862"></div>
+            <div class="item-point" data-top="470" data-left="1550"></div>
+        </div>
+        
+        <br>
+        <br>
+
+        <h5>view Code</h5>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#html" data-toggle="tab">HTML</a>
+            </li>
+            <li>
+                <a href="#javascript" data-toggle="tab">Javascript</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="html">
+<pre>
+&#x3C;div class=&#x22;scalize&#x22;&#x3E;
+    &#x3C;img src=&#x22;img/img01.jpg&#x22; alt=&#x22;&#x22; class=&#x22;target&#x22;&#x3E;
+    &#x3C;div class=&#x22;item-point&#x22; data-top=&#x22;730&#x22; data-left=&#x22;227&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;item-point&#x22; data-top=&#x22;380&#x22; data-left=&#x22;862&#x22;&#x3E;&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;item-point&#x22; data-top=&#x22;470&#x22; data-left=&#x22;1550&#x22;&#x3E;&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+</pre>
+            </div>
+            <div class="tab-pane" id="javascript">
+                <p>Options</p>
+                <table class="table table-bordered">
+                    <tr>
+                        <td width="150">styleSelector</td>
+                        <td>"<strong>circle</strong>" as default style of point</td>
+                    </tr>
+                </table>
+<pre>
+$(document).ready(function(){
+    $(&#x27;.scalize&#x27;).scalize();
+});
+</pre>
+            </div>
+        </div>
+
+    </div>
+	
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scalize.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.scalize').scalize();
+        });        
+    </script>
+</body>
+</html>

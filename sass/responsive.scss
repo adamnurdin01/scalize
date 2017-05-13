@@ -1,0 +1,34 @@
+/*
+Responsive
+=========================== */
+@media(max-width:480px){
+    .scalize{
+        /*
+        Popover
+        =========================== */
+        .content{
+            -ms-transform: scale(0.7, 0.7); /* IE 9 */
+            -webkit-transform: scale(0.7, 0.7); /* Safari */
+            transform: scale(0.7, 0.7);
+            -ms-transform-origin: 20% 40%; /* IE 9 */
+            -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
+            transform-origin: 10% 10%;
+        }
+    }
+    
+}
+
+@media(max-width:360px){
+        
+    .item-point{
+        &.square{
+            -ms-transform: scale(0.7, 0.7); /* IE 9 */
+            -webkit-transform: scale(0.7, 0.7); /* Safari */
+            transform: scale(0.7, 0.7);
+            -ms-transform-origin: 20% 40%; /* IE 9 */
+            -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
+            transform-origin: 10% 10%;
+        }
+    }
+    
+}

@@ -1,0 +1,407 @@
+/*
+Import
+=========================== */
+@import 'css3-mixins';
+@import 'variable';
+
+/*
+Scalize
+=========================== */
+$width: 20px;
+$height: 20px;
+
+.scalize{
+    transform-origin: top left;
+    position: relative;
+    
+    img.target{
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    /*
+    Popover
+    =========================== */
+    $width-content: 250px;
+
+    .content{
+        position: absolute;
+        background: #fff;
+        width: $width-content;
+        display: none;
+        z-index: 99;
+        height: auto;
+        @include box-shadow(0px, 2px, 3px, rgba(0,0,0,0.5));
+
+        .head{
+            position: relative;
+            padding: 10px 15px;
+            background: #efefef;
+            border-bottom: solid 1px #dfdfdf;
+
+            .title{
+                margin-bottom: 0;
+            }
+
+            .exit{
+                float: right;
+                display: block;
+                width: 38px;
+                height: 38px;
+                border-left: solid 1px #ccc;
+                position: relative;
+                top: -10px;
+                left: 15px;
+                @include opacity(0.5);
+
+                &:hover{
+                    @include opacity(0.8);
+                    background: rgba(0,0,0,0.3);
+                }
+
+                img{
+                    padding: 7px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .body{
+            padding: 10px 15px;
+            position: relative;
+            background: #fff;
+            position: relative;
+
+            img{
+                width: 100%;
+            }
+
+            p:last-child{
+                margin-bottom: 0
+            }
+
+            &:before{
+                content: '';
+                position: absolute;
+                border: solid 15px transparent;
+                top: 0;
+            }
+        }
+        
+
+        .footer{
+            padding: 10px 15px;
+            border-top: solid 1px #dfdfdf;
+            position: relative;
+        }
+
+        &.center{
+            .body:before{
+                top: 50%;
+                margin-top: -24px;
+            }                   
+        }
+
+        &.left{
+            margin-left: -$width-content + -$width + -10px;
+
+            .body:before{
+                left: 100%;
+                border-left-color: #fff;
+                border-right: 0;
+            }
+
+            &.top{
+                margin-top: -43px;
+                margin-bottom: 0;                    
+            }
+
+            &.bottom{
+                margin-top: 50px;
+
+                .body:before{
+                    top: 100%;
+                    margin-top: -56px;
+                }
+            }
+        }
+
+        &.right{
+            margin-left: 50px;
+
+            .body:before{
+                right: 100%;
+                border-right-color: #fff;
+                border-left: 0;
+            }
+
+            &.top{
+                margin-top: -43px;
+                margin-bottom: 0;
+            }
+
+            &.bottom{
+                margin-top: 50px;
+
+                .body:before{
+                    top: 100%;
+                    margin-top: -56px;
+                }
+            }
+        }
+    }
+}
+
+/*
+Scalize selector
+=========================== */
+.wrap-selector{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.scalize .item-point{
+    display: block;
+    position: absolute;
+    width: $width;
+    height: $height;
+    background: $color2;
+    border: solid 3px $color4;
+    text-decoration: none !important;
+    @include transition(all 0.3s ease-in-out);
+    @include box-shadow(0px, 1px, 2px, rgba(0,0,0,0.5));
+
+    /*
+    Toggle
+    =========================== */
+    > div{
+        position: relative;   
+        cursor: default;
+        z-index: 9;
+
+        .toggle{
+            display: block;
+            position: absolute;
+            top: -3px;
+            left: -3px;
+        }
+    }
+
+    /*
+    styleSelector Circle
+    =========================== */
+    &.circle{
+        @include border-radius(50%);
+        
+        &.disabled,
+        &.active{
+            border: solid 3px $color2;
+            background: $color2;
+        }
+
+        .toggle{
+            @include border-radius(50%);
+        }
+    }
+
+    /*
+    styleSelector Square
+    =========================== */
+    &.square{
+        width: 30px;
+        height: 30px;
+        font-weight: 700;
+        line-height: 27px;
+        color: $color-title;
+        background: $color1;
+        border: solid 2px $color4;
+        @include border-radius(4px);
+        text-align: center;
+        
+        &.disabled,
+        &.active{
+            color: #fff;
+            background: $color4;
+        }
+        
+        > div{
+
+            .toggle{
+                @include border-radius(4px);
+                top: -2px;
+                left: -2px;
+            }
+        }
+    }
+    
+    &.disabled{
+        .toggle{
+            cursor: default;
+        }
+    }
+
+    /*
+    styleSelector Content
+    =========================== */
+    &.content{
+        width: 200px;
+        height: 0;
+        border: 0;
+    }
+
+    /*
+    animationSelector Pulse
+    =========================== */
+    &.pulse {
+        box-shadow: 0 0 0 $color3;
+        animation: pulse 2s infinite;
+
+        &:hover {
+            animation: none;
+        }
+    }
+
+    /*
+    animationSelector Pulse2
+    =========================== */
+    &.pulse2{
+        &:before,
+        &:after {
+            content: "";
+            margin: -3px 0 0 -3px;
+            position: absolute;
+            box-sizing: border-box;
+            width: $width;
+            height: $height;
+            border: 1px solid $color3;
+            border-radius: 50%;
+        }
+        
+        &:before {
+            animation: blip1 1s infinite cubic-bezier(0, .6, 1, .6);
+        }
+        
+        &:after {
+            animation: blip2 1s infinite linear;
+        }
+    }
+
+    /*
+    animationSelector marker
+    =========================== */
+    &.marker{
+        background: transparent;
+        @include box-shadow(0,0,0);
+        border: 0;
+
+        &.active{
+            border: 0;
+
+            .pin{
+                background: $color4;
+
+                &:after {
+                    background: $color2;
+                }
+            }
+        }
+
+        .toggle{
+            width: 30px;
+            height: 30px;
+            top: -6px;
+            left: -6px;
+        }
+
+        .pin {
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            background: $color2;
+            position: absolute;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            left: 50%;
+            top: 50%;
+            margin: -15px 0 0 -15px;
+            -webkit-animation-name: bounce;
+            -moz-animation-name: bounce;
+            -ms-animation-name: bounce;
+            animation-name: bounce;
+            -webkit-animation-fill-mode: both;
+            -moz-animation-fill-mode: both;
+            -ms-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+            -ms-animation-duration: 1s;
+            animation-duration: 1s;
+            z-index: 3;
+
+            &:after {
+                content: '';
+                width: 14px;
+                height: 14px;
+                margin: 8px 0 0 8px;
+                background: $color4;
+                position: absolute;
+                border-radius: 50%;
+            }
+        }
+
+        .pulse {
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: 15px 0px 0px -7px;
+            -webkit-transform: rotateX(55deg);
+            -moz-transform: rotateX(55deg);
+            -ms-transform: rotateX(55deg);
+            transform: rotateX(55deg);
+            z-index: 2;
+
+            &:after {
+                content: "";
+                border-radius: 50%;
+                height: 40px;
+                width: 40px;
+                position: absolute;
+                margin: -13px 0 0 -13px;
+                -webkit-animation: pulsate 1s ease-out;
+                -moz-animation: pulsate 1s ease-out;
+                -ms-animation: pulsate 1s ease-out;
+                animation: pulsate 1s ease-out;
+                -webkit-animation-iteration-count: infinite;
+                -moz-animation-iteration-count: infinite;
+                -ms-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+                opacity: 0;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                filter: alpha(opacity=0);
+                -webkit-box-shadow: 0 0 1px 2px $color1;
+                box-shadow: 0 0 1px 2px $color1;
+                -webkit-animation-delay: 1.1s;
+                -moz-animation-delay: 1.1s;
+                -ms-animation-delay: 1.1s;
+                animation-delay: 1.1s;
+            }
+        }
+    }
+
+    
+}
+
+@import 'animation';
+@import 'responsive';
