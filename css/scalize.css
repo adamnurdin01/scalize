@@ -634,7 +634,15 @@ Responsive
 @media (max-width: 480px) {
     .scalize {
     }
-    .scalize .content {
+    .scalize > div.content.animated {
+        top: 30px !important;
+        left: 50% !important;
+        margin: 0 0 0 -125px !important;
+    }
+    .scalize > div.content.animated .body:before {
+        display: none;
+    }
+    .scalize .item-point.content {
         -ms-transform: scale(0.7, 0.7);
         /* IE 9 */
         
@@ -649,12 +657,6 @@ Responsive
         /* Chrome, Safari, Opera */
         
         transform-origin: 10% 10%;
-        top: 30px !important;
-        left: 50% !important;
-        margin: 0 0 0 -125px !important;
-    }
-    .scalize .content .body:before {
-        display: none;
     }
 }
 @media (max-width: 360px) {

@@ -6,13 +6,24 @@ Responsive
         /*
         Popover
         =========================== */
-        .content{
+        > div.content.animated{
+            top: 30px !important;
+            left: 50% !important;
+            margin: 0 0 0 -125px !important;
+
+            .body:before{
+                display: none;
+            }
+        }
+        
+        .item-point.content{
             -ms-transform: scale(0.7, 0.7); /* IE 9 */
             -webkit-transform: scale(0.7, 0.7); /* Safari */
             transform: scale(0.7, 0.7);
             -ms-transform-origin: 20% 40%; /* IE 9 */
             -webkit-transform-origin: 20% 40%; /* Chrome, Safari, Opera */
             transform-origin: 10% 10%;
+            
         }
     }
     
