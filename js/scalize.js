@@ -32,9 +32,6 @@
             $(el).find('.target').on('load', function(){
                 scaling.layout(el);
             });
-            $(window).on('load', function(){
-                scaling.layout(el);
-            });
             $(window).on('resize', function(){
                 scaling.layout(el);
             });
