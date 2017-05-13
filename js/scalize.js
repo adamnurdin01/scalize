@@ -27,12 +27,14 @@
         //----------------------------------------//
         init: function(el, options){
             this.settings = $.extend(variable, options);
-            this.event(el);
-            scaling.layout(el);            
+            this.event(el);            
+
+            scaling.layout(el);
             $(window).on('load', function(){
-                $(el).find('.target').on('load', function(){
-                    scaling.layout(el);
-                });
+                scaling.layout(el);
+            });
+            $(el).find('.target').on('load', function(){
+                scaling.layout(el);
             });
             $(window).on('resize', function(){
                 scaling.layout(el);
