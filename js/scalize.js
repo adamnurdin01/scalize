@@ -1,6 +1,6 @@
 (function($) {
     "use strict";
-    
+        $.fn.scalize = function(options){
     //----------------------------------------//
     // Variable
     //----------------------------------------//
@@ -190,8 +190,9 @@
     //----------------------------------------//
     // Scalize Plugin
     //----------------------------------------//
-    $.fn.scalize = function(options){
-        return scaling.init(this, options);
-    };
-
+return this.each(function(){
+           var $this = $(this);  
+         scaling.init($this, options);
+		});
+ };
 }(jQuery));
