@@ -104,7 +104,7 @@
 
                 // Exit
                 var target = $(this).data('popover'),
-                    idTarget = $(target);
+                    idTarget = $(this).parents('.scalize').find(target);
                 idTarget.find('.exit').on('click', function(e){
                     e.preventDefault();
                     // selector.removeClass('active');
