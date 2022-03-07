@@ -1,6 +1,6 @@
 (function($) {
     "use strict";
-    
+
     //----------------------------------------//
     // Variable
     //----------------------------------------//
@@ -11,7 +11,7 @@
         styleSelector : 'circle',
         animationSelector : '',
         animationPopoverIn : '',
-        animationPopoverOut : '', 
+        animationPopoverOut : '',
         onInit : null,
         getSelectorElement : null,
         getValueRemove : null
@@ -27,7 +27,7 @@
         //----------------------------------------//
         init: function(el, options){
             this.settings = $.extend(variable, options);
-            this.event(el);            
+            this.event(el);
 
             scaling.layout(el);
             $(window).on('load', function(){
@@ -70,19 +70,19 @@
             $(elem).find('.content').addClass('animated');
 
             // Wrapper selector
-            $(this.settings.selector).wrapAll( "<div class='wrap-selector' />");
+            $(elem).find(this.settings.selector).wrapAll("<div class='wrap-selector' />");
 
             // Event Selector
             $(this.settings.selector).each(function(){
-                
+
                 // Toggle
-                $('.toggle', this).on('click', function(e){
+                $('.toggle', this).once().on('click', function(e){
                     e.preventDefault();
                     $(this).closest(scaling.settings.selector).toggleClass('active');
 
                     // Selector Click
                     var content = $(this).closest(scaling.settings.selector).data('popover'),
-                        id = $(content);
+                        id = $(this).parents('.scalize').find(content);
 
                     if($(this).closest(scaling.settings.selector).hasClass('active') && !$(this).closest(scaling.settings.selector).hasClass('disabled')){
                         if ( $.isFunction( scaling.settings.getSelectorElement ) ) {
@@ -159,7 +159,7 @@
                     allSize = $(target).find('.head').outerHeight() + $(target).find('.body').outerHeight() + $(target).find('.footer').outerHeight();
                 $(target).css("left", getLeft + "px");
                 $(target).css("height", allSize + "px");
-                
+
                 if($(target).hasClass('bottom')){
                     var getHeight = $(target).outerHeight(),
                         getTopBottom = getTop - getHeight;
@@ -171,20 +171,20 @@
                 }else{
                     $(target).css("top", getTop + "px");
                 }
-                
+
                 $('.toggle', this).css('width', $(this).outerWidth());
                 $('.toggle', this).css('height', $(this).outerHeight());
-                
+
                 // Toggle Size
                 if($(this).find('.pin')){
                     var widthThis = $('.pin', this).outerWidth(),
                         heightThis = $('.pin', this).outerHeight();
                     $('.toggle', this).css('width', widthThis);
-                    $('.toggle', this).css('height', heightThis);                    
+                    $('.toggle', this).css('height', heightThis);
                 }
             });
         }
-        
+
     };
 
     //----------------------------------------//
